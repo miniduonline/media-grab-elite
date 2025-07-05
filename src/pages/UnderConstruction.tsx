@@ -1,55 +1,21 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Construction, Mail, Github, Twitter, Instagram, Linkedin, Loader, Code2, Brain, Palette, Calendar } from 'lucide-react';
+import { Construction, Mail, Github, Twitter, Instagram, Linkedin, Loader, Code2, Brain, Palette } from 'lucide-react';
 
 const UnderConstruction = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [showWelcome, setShowWelcome] = useState(true);
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0
-  });
-
-  // Set launch date to January 1, 2025
-  const launchDate = new Date('2025-01-01T00:00:00').getTime();
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 1500);
     const welcomeTimer = setTimeout(() => setShowWelcome(false), 4000);
     
-    // Countdown timer - update immediately and then every second
-    const updateCountdown = () => {
-      const now = new Date().getTime();
-      const distance = launchDate - now;
-
-      if (distance > 0) {
-        setTimeLeft({
-          days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((distance % (1000 * 60)) / 1000)
-        });
-      } else {
-        // If launch date has passed, set all to 0
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-      }
-    };
-
-    // Update immediately
-    updateCountdown();
-    
-    // Then update every second
-    const countdownInterval = setInterval(updateCountdown, 1000);
-
     return () => {
       clearTimeout(timer);
       clearTimeout(welcomeTimer);
-      clearInterval(countdownInterval);
     };
-  }, [launchDate]);
+  }, []);
 
   const skills = [
     { name: 'Web Developer', icon: Code2, description: 'Building modern web applications', color: 'from-blue-500 to-cyan-500' },
@@ -168,41 +134,15 @@ const UnderConstruction = () => {
           </p>
         </div>
 
-        {/* Countdown Timer */}
-        <Card className="bg-white/10 backdrop-blur-lg border border-white/20 p-4 sm:p-6 md:p-8 max-w-3xl mx-auto relative overflow-hidden">
+        {/* Coming Soon Message */}
+        <Card className="bg-white/10 backdrop-blur-lg border border-white/20 p-4 sm:p-6 md:p-8 max-w-2xl mx-auto relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10"></div>
           <div className="relative z-10">
-            <div className="flex items-center justify-center mb-4 sm:mb-6">
-              <Calendar className="h-5 w-5 sm:h-6 sm:w-6 text-purple-400 mr-2" />
-              <h2 className="text-lg sm:text-xl font-bold text-white text-center">Launching January 1, 2025</h2>
-            </div>
-            
-            <div className="grid grid-cols-4 gap-2 sm:gap-4 md:gap-8">
-              <div className="text-center">
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 sm:p-3 md:p-4 border border-white/20">
-                  <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1">{timeLeft.days.toString().padStart(2, '0')}</div>
-                  <div className="text-xs sm:text-sm text-white/70 uppercase tracking-wide">Days</div>
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 sm:p-3 md:p-4 border border-white/20">
-                  <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1">{timeLeft.hours.toString().padStart(2, '0')}</div>
-                  <div className="text-xs sm:text-sm text-white/70 uppercase tracking-wide">Hours</div>
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 sm:p-3 md:p-4 border border-white/20">
-                  <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1">{timeLeft.minutes.toString().padStart(2, '0')}</div>
-                  <div className="text-xs sm:text-sm text-white/70 uppercase tracking-wide">Minutes</div>
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 sm:p-3 md:p-4 border border-white/20">
-                  <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1">{timeLeft.seconds.toString().padStart(2, '0')}</div>
-                  <div className="text-xs sm:text-sm text-white/70 uppercase tracking-wide">Seconds</div>
-                </div>
-              </div>
-            </div>
+            <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">Portfolio Coming Soon</h2>
+            <p className="text-sm sm:text-base text-white/80 leading-relaxed">
+              I'm currently working on creating an amazing portfolio experience. 
+              Stay tuned for updates and feel free to connect with me on social media!
+            </p>
           </div>
         </Card>
 

@@ -6,10 +6,15 @@ import { Construction, Mail, Github, Twitter, Instagram, Linkedin, Loader, Code2
 
 const UnderConstruction = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [showWelcome, setShowWelcome] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 1500);
-    return () => clearTimeout(timer);
+    const welcomeTimer = setTimeout(() => setShowWelcome(false), 4000);
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(welcomeTimer);
+    };
   }, []);
 
   const skills = [
@@ -38,6 +43,48 @@ const UnderConstruction = () => {
         <div className="text-center relative z-10">
           <Loader className="h-12 w-12 text-purple-400 animate-spin mx-auto mb-4" />
           <p className="text-white/60 text-lg">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (showWelcome) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center relative overflow-hidden">
+        {/* Enhanced Animated Background */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-full animate-pulse blur-xl"></div>
+          <div className="absolute top-3/4 right-1/4 w-48 h-48 bg-gradient-to-r from-blue-500/15 to-cyan-500/15 rounded-full animate-pulse blur-xl" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute bottom-1/4 left-1/3 w-24 h-24 bg-gradient-to-r from-pink-500/20 to-purple-500/20 rounded-full animate-pulse blur-xl" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-1/2 right-1/3 w-36 h-36 bg-gradient-to-r from-orange-500/15 to-red-500/15 rounded-full animate-pulse blur-xl" style={{ animationDelay: '0.5s' }}></div>
+        </div>
+
+        {/* Welcome Text Animation */}
+        <div className="text-center relative z-10 animate-fade-in">
+          <div className="mb-8">
+            <h1 className="text-6xl md:text-8xl font-bold mb-4">
+              <span className="inline-block animate-bounce" style={{ animationDelay: '0s' }}>W</span>
+              <span className="inline-block animate-bounce" style={{ animationDelay: '0.1s' }}>e</span>
+              <span className="inline-block animate-bounce" style={{ animationDelay: '0.2s' }}>l</span>
+              <span className="inline-block animate-bounce" style={{ animationDelay: '0.3s' }}>c</span>
+              <span className="inline-block animate-bounce" style={{ animationDelay: '0.4s' }}>o</span>
+              <span className="inline-block animate-bounce" style={{ animationDelay: '0.5s' }}>m</span>
+              <span className="inline-block animate-bounce" style={{ animationDelay: '0.6s' }}>e</span>
+            </h1>
+            <div className="h-1 w-32 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto animate-pulse"></div>
+          </div>
+          
+          <p className="text-2xl md:text-3xl text-white/80 animate-fade-in" style={{ animationDelay: '1s' }}>
+            To My Digital World
+          </p>
+          
+          <div className="mt-8 animate-fade-in" style={{ animationDelay: '2s' }}>
+            <div className="flex justify-center space-x-4">
+              <div className="w-3 h-3 bg-purple-400 rounded-full animate-pulse"></div>
+              <div className="w-3 h-3 bg-pink-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+              <div className="w-3 h-3 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -162,9 +209,14 @@ const UnderConstruction = () => {
           </div>
         </Card>
 
-        {/* Footer */}
-        <div className="text-white/60 text-sm">
-          <p className="animate-pulse">Portfolio launching soon • Stay tuned for updates</p>
+        {/* Footer with Website URL */}
+        <div className="text-center space-y-3">
+          <div className="text-white/60 text-sm">
+            <p className="animate-pulse">Portfolio launching soon • Stay tuned for updates</p>
+          </div>
+          <div className="text-white/40 text-xs">
+            <p className="font-mono">www.minidushashimal.com</p>
+          </div>
         </div>
       </div>
     </div>

@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import Header from '@/components/Header';
 import URLInput from '@/components/URLInput';
@@ -86,15 +85,15 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 dark:from-slate-900 dark:via-blue-950 dark:to-purple-950">
       <Header />
       
-      <main className="container mx-auto px-4 py-8 space-y-12">
+      <main className="container mx-auto px-4 py-6 sm:py-8 space-y-8 sm:space-y-12">
         {/* Hero Section */}
-        <section className="text-center space-y-6">
-          <div className="space-y-4">
-            <h1 className="text-4xl md:text-6xl font-bold">
+        <section className="text-center space-y-4 sm:space-y-6 px-4">
+          <div className="space-y-3 sm:space-y-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
               Download from{' '}
               <span className="gradient-text">Social Media</span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               Fast, free, and secure social media content downloader. 
               Support for YouTube, TikTok, and Instagram with multiple quality options.
             </p>
@@ -102,13 +101,13 @@ const Index = () => {
         </section>
 
         {/* URL Input Section */}
-        <section className="max-w-2xl mx-auto">
+        <section className="max-w-2xl mx-auto px-4">
           <URLInput onUrlSubmit={handleUrlSubmit} />
         </section>
 
         {/* Quality Selector */}
         {showQualitySelector && (
-          <section className="max-w-2xl mx-auto">
+          <section className="max-w-2xl mx-auto px-4">
             <QualitySelector
               platform={currentPlatform}
               url={currentUrl}
@@ -119,7 +118,7 @@ const Index = () => {
 
         {/* Download Progress */}
         {downloads.length > 0 && (
-          <section className="max-w-4xl mx-auto">
+          <section className="max-w-4xl mx-auto px-4">
             <DownloadProgress
               activeDownloads={downloads}
               onRemoveDownload={handleRemoveDownload}
@@ -128,10 +127,10 @@ const Index = () => {
         )}
 
         {/* Platform Cards */}
-        <section className="max-w-6xl mx-auto">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold mb-2 gradient-text">Supported Platforms</h2>
-            <p className="text-muted-foreground">
+        <section className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-6 sm:mb-8">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-2 gradient-text">Supported Platforms</h2>
+            <p className="text-sm sm:text-base text-muted-foreground">
               Download from the most popular social media platforms
             </p>
           </div>
@@ -139,17 +138,17 @@ const Index = () => {
         </section>
 
         {/* Feature Highlights */}
-        <section className="max-w-6xl mx-auto">
+        <section className="max-w-6xl mx-auto px-4">
           <FeatureHighlights />
         </section>
 
         {/* Footer */}
-        <footer className="border-t border-border/50 mt-16 pt-8">
-          <div className="text-center text-muted-foreground">
-            <p className="mb-2">
+        <footer className="border-t border-border/50 mt-12 sm:mt-16 pt-6 sm:pt-8 px-4">
+          <div className="text-center text-muted-foreground space-y-2">
+            <p className="text-sm sm:text-base">
               © 2024 SocialDownloader. Download responsibly and respect content creators.
             </p>
-            <p className="text-sm">
+            <p className="text-xs sm:text-sm leading-relaxed">
               This tool is for personal use only. Please respect copyright laws and platform terms of service.
             </p>
           </div>

@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -70,88 +69,88 @@ const QualitySelector = ({
   };
 
   return (
-    <Card className="p-6 glass-effect animate-slide-up">
-      <div className="flex items-center gap-3 mb-6">
-        <div className={`p-2 rounded-lg bg-gradient-to-r ${getPlatformColor(platform)}`}>
-          <FileVideo className="h-5 w-5 text-white" />
+    <Card className="p-4 sm:p-6 glass-effect animate-slide-up">
+      <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+        <div className={`p-1.5 sm:p-2 rounded-lg bg-gradient-to-r ${getPlatformColor(platform)}`}>
+          <FileVideo className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
         </div>
-        <div>
-          <h3 className="text-lg font-semibold capitalize">{platform} Content Detected</h3>
-          <p className="text-sm text-muted-foreground truncate max-w-xs">{url}</p>
+        <div className="flex-1 min-w-0">
+          <h3 className="text-base sm:text-lg font-semibold capitalize">{platform} Content Detected</h3>
+          <p className="text-xs sm:text-sm text-muted-foreground truncate">{url}</p>
         </div>
       </div>
 
       <Tabs defaultValue="video" className="w-full">
         <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="video" className="flex items-center gap-2">
-            <FileVideo className="h-4 w-4" />
+          <TabsTrigger value="video" className="flex items-center gap-1.5 sm:gap-2 text-sm">
+            <FileVideo className="h-3 w-3 sm:h-4 sm:w-4" />
             Video
           </TabsTrigger>
-          <TabsTrigger value="audio" className="flex items-center gap-2">
-            <Music className="h-4 w-4" />
+          <TabsTrigger value="audio" className="flex items-center gap-1.5 sm:gap-2 text-sm">
+            <Music className="h-3 w-3 sm:h-4 sm:w-4" />
             Audio
           </TabsTrigger>
         </TabsList>
 
-        <TabsContent value="video" className="space-y-3 mt-4">
+        <TabsContent value="video" className="space-y-2 sm:space-y-3 mt-3 sm:mt-4">
           {videoOptions.map((option, index) => (
             <div
               key={index}
-              className={`p-4 rounded-lg border cursor-pointer transition-all hover:border-primary/50 ${
+              className={`p-3 sm:p-4 rounded-lg border cursor-pointer transition-all hover:border-primary/50 ${
                 selectedQuality === option ? 'border-primary bg-primary/5' : 'border-border'
               }`}
               onClick={() => setSelectedQuality(option)}
             >
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="flex items-center gap-2">
-                    <Badge variant="secondary">{option.quality}</Badge>
-                    <Badge variant="outline">{option.format}</Badge>
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="flex items-center gap-1.5 sm:gap-2">
+                    <Badge variant="secondary" className="text-xs">{option.quality}</Badge>
+                    <Badge variant="outline" className="text-xs">{option.format}</Badge>
                   </div>
                 </div>
-                <div className="text-sm text-muted-foreground">{option.size}</div>
+                <div className="text-xs sm:text-sm text-muted-foreground">{option.size}</div>
               </div>
             </div>
           ))}
         </TabsContent>
 
-        <TabsContent value="audio" className="space-y-3 mt-4">
+        <TabsContent value="audio" className="space-y-2 sm:space-y-3 mt-3 sm:mt-4">
           {audioOptions.map((option, index) => (
             <div
               key={index}
-              className={`p-4 rounded-lg border cursor-pointer transition-all hover:border-primary/50 ${
+              className={`p-3 sm:p-4 rounded-lg border cursor-pointer transition-all hover:border-primary/50 ${
                 selectedQuality === option ? 'border-primary bg-primary/5' : 'border-border'
               }`}
               onClick={() => setSelectedQuality(option)}
             >
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="flex items-center gap-2">
-                    <Badge variant="secondary">{option.quality}</Badge>
-                    <Badge variant="outline">{option.format}</Badge>
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="flex items-center gap-1.5 sm:gap-2">
+                    <Badge variant="secondary" className="text-xs">{option.quality}</Badge>
+                    <Badge variant="outline" className="text-xs">{option.format}</Badge>
                   </div>
                 </div>
-                <div className="text-sm text-muted-foreground">{option.size}</div>
+                <div className="text-xs sm:text-sm text-muted-foreground">{option.size}</div>
               </div>
             </div>
           ))}
         </TabsContent>
       </Tabs>
 
-      <div className="flex gap-3 mt-6">
+      <div className="flex gap-2 sm:gap-3 mt-4 sm:mt-6">
         <Button
           onClick={handleDownload}
           disabled={!selectedQuality}
-          className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+          className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-sm sm:text-base"
         >
-          <Download className="mr-2 h-4 w-4" />
+          <Download className="mr-2 h-3 w-3 sm:h-4 sm:w-4" />
           Download {selectedQuality?.quality || ''}
         </Button>
       </div>
 
-      <div className="flex items-center gap-2 mt-4 p-3 bg-blue-50 dark:bg-blue-950/20 rounded-lg">
-        <Info className="h-4 w-4 text-blue-600" />
-        <p className="text-sm text-blue-600">
+      <div className="flex items-center gap-2 mt-3 sm:mt-4 p-2 sm:p-3 bg-blue-50 dark:bg-blue-950/20 rounded-lg">
+        <Info className="h-3 w-3 sm:h-4 sm:w-4 text-blue-600 flex-shrink-0" />
+        <p className="text-xs sm:text-sm text-blue-600 leading-relaxed">
           File sizes are estimates and may vary depending on content duration and quality.
         </p>
       </div>

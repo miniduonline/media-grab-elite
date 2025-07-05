@@ -1,4 +1,3 @@
-
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Youtube, Music, Camera, Download } from 'lucide-react';
@@ -32,7 +31,7 @@ const PlatformCards = () => {
   ];
 
   return (
-    <div className="grid md:grid-cols-3 gap-6 animate-slide-up">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 animate-slide-up">
       {platforms.map((platform, index) => {
         const IconComponent = platform.icon;
         return (
@@ -41,19 +40,19 @@ const PlatformCards = () => {
             className={`platform-card bg-card/50 ${platform.bgClass} animate-fade-in`}
             style={{ animationDelay: `${index * 0.2}s` }}
           >
-            <div className="relative z-10">
-              <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${platform.gradient} mb-4`}>
-                <IconComponent className="h-6 w-6 text-white" />
+            <div className="relative z-10 p-4 sm:p-6">
+              <div className={`inline-flex p-2 sm:p-3 rounded-xl bg-gradient-to-r ${platform.gradient} mb-3 sm:mb-4`}>
+                <IconComponent className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
               </div>
               
-              <h3 className="text-xl font-bold mb-2">{platform.name}</h3>
-              <p className="text-muted-foreground mb-4 text-sm">
+              <h3 className="text-lg sm:text-xl font-bold mb-2">{platform.name}</h3>
+              <p className="text-muted-foreground mb-3 sm:mb-4 text-sm leading-relaxed">
                 {platform.description}
               </p>
               
-              <ul className="space-y-2 mb-6">
+              <ul className="space-y-1.5 sm:space-y-2 mb-4 sm:mb-6">
                 {platform.features.map((feature, idx) => (
-                  <li key={idx} className="text-sm flex items-center gap-2">
+                  <li key={idx} className="text-xs sm:text-sm flex items-center gap-2">
                     <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${platform.gradient}`} />
                     {feature}
                   </li>
@@ -62,9 +61,9 @@ const PlatformCards = () => {
               
               <Button
                 variant="outline"
-                className="w-full hover:bg-primary/10 transition-all duration-300"
+                className="w-full hover:bg-primary/10 transition-all duration-300 text-sm sm:text-base"
               >
-                <Download className="mr-2 h-4 w-4" />
+                <Download className="mr-2 h-3 w-3 sm:h-4 sm:w-4" />
                 Start Download
               </Button>
             </div>

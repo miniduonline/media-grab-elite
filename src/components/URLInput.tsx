@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -89,15 +88,15 @@ const URLInput = ({ onUrlSubmit }: { onUrlSubmit: (url: string, platform: string
   };
 
   return (
-    <Card className="p-8 glass-effect animate-fade-in">
-      <div className="text-center mb-6">
-        <h2 className="text-3xl font-bold mb-2 gradient-text">Paste Your Link</h2>
-        <p className="text-muted-foreground">
+    <Card className="p-4 sm:p-6 md:p-8 glass-effect animate-fade-in">
+      <div className="text-center mb-4 sm:mb-6">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-2 gradient-text">Paste Your Link</h2>
+        <p className="text-sm sm:text-base text-muted-foreground">
           Support for YouTube, TikTok, and Instagram content
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
         <div
           className={`relative transition-all duration-300 ${
             dragActive ? 'scale-105 ring-2 ring-primary/50' : ''
@@ -112,33 +111,33 @@ const URLInput = ({ onUrlSubmit }: { onUrlSubmit: (url: string, platform: string
             placeholder="Paste your YouTube, TikTok, or Instagram URL here..."
             value={url}
             onChange={(e) => setUrl(e.target.value)}
-            className="h-14 pl-12 text-lg bg-background/50 border-2 focus:border-primary/50 transition-all"
+            className="h-12 sm:h-14 pl-10 sm:pl-12 text-base sm:text-lg bg-background/50 border-2 focus:border-primary/50 transition-all pr-4"
             disabled={isProcessing}
           />
-          <Link2 className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+          <Link2 className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground" />
         </div>
 
         <Button
           type="submit"
           size="lg"
-          className="w-full h-14 text-lg bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition-all duration-300 hover:scale-105"
+          className="w-full h-12 sm:h-14 text-base sm:text-lg bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition-all duration-300 hover:scale-105"
           disabled={isProcessing}
         >
           {isProcessing ? (
             <>
-              <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+              <Loader2 className="mr-2 h-4 w-4 sm:h-5 sm:w-5 animate-spin" />
               Processing...
             </>
           ) : (
             <>
-              <Download className="mr-2 h-5 w-5" />
+              <Download className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
               Download Content
             </>
           )}
         </Button>
       </form>
 
-      <div className="mt-6 text-center text-sm text-muted-foreground">
+      <div className="mt-4 sm:mt-6 text-center text-xs sm:text-sm text-muted-foreground">
         Drag and drop URLs directly into the input field above
       </div>
     </Card>
